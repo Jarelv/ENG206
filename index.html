@@ -1,154 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ENG206 Sustainable Engineering Poster</title>
+<html>
+  <head>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-            width: 9930px;
-            height: 7020px;
-            overflow: hidden;
-            transition: transform 1s ease-in-out;
-        }
-
-        .phase {
-            margin: 50px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        h1, h2, h3 {
-            text-align: center;
-            color: #2c3e50;
-        }
-
-        p {
-            line-height: 1.6;
-        }
-
-        .phase2-3 {
-            display: flex;
-            justify-content: space-around;
-            margin: 20px 0;
-        }
-
-        .stage {
-            width: 18%;
-            background-color: #eaeaea;
-            padding: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .stage h3 {
-            margin-top: 10px;
-        }
-
-        .subsection {
-            margin-top: 10px;
-            padding: 10px;
-            border-top: 1px solid #ddd;
-        }
+      #thrust
+      {
+        position:absolute;
+        transform:rotate(270deg);
+        width:600px;
+        top:300px;
+      }
     </style>
-</head>
-<body>
-    <div class="phase" id="phase1">
-        <h2>Phase 1</h2>
-        <p>Goal, Scope, Functional Unit, Boundaries</p>
-    </div>
-
-    <div class="phase" id="phase2-3">
-        <h2>Phase 2 & 3</h2>
-        <div class="phase2-3">
-            <!-- Raw Materials Stage -->
-            <div class="stage">
-                <h3>Raw Materials</h3>
-                <div class="subsection">Environmental Inputs</div>
-                <div class="subsection">Energy</div>
-                <div class="subsection">Waste</div>
-            </div>
-
-            <!-- Manufacturing/Processing Stage -->
-            <div class="stage">
-                <h3>Manufacturing/Processing</h3>
-                <div class="subsection">Environmental Inputs</div>
-                <div class="subsection">Energy</div>
-                <div class="subsection">Waste</div>
-            </div>
-
-            <!-- Distribution/Transportation Stage -->
-            <div class="stage">
-                <h3>Distribution/Transportation</h3>
-                <div class="subsection">Environmental Inputs</div>
-                <div class="subsection">Energy</div>
-                <div class="subsection">Waste</div>
-            </div>
-
-            <!-- Use Stage -->
-            <div class="stage">
-                <h3>Use</h3>
-                <div class="subsection">Environmental Inputs</div>
-                <div class="subsection">Energy</div>
-                <div class="subsection">Waste</div>
-            </div>
-
-            <!-- Disposal Stage -->
-            <div class="stage">
-                <h3>Disposal</h3>
-                <div class="subsection">Environmental Inputs</div>
-                <div class="subsection">Energy</div>
-                <div class="subsection">Waste</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="phase" id="phase4">
-        <h2>Phase 4</h2>
-        <p>Interpretation, Summarisation, Hotspots, Limitations</p>
-    </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            let currentSection = 0;
-            const sections = [
-                { id: "phase1", scale: 1, translateX: 0, translateY: 0 },
-                { id: "phase2-3", scale: 1, translateX: -1000, translateY: 0 }, // Adjust X and Y values as needed
-                { id: "phase4", scale: 1, translateX: 0, translateY: -2000 }, // Adjust X and Y values as needed
-            ];
-
-            function showSection(index) {
-                const section = sections[index];
-                document.body.style.transform = `scale(${section.scale}) translate(${section.translateX}px, ${section.translateY}px)`;
-            }
-
-            document.addEventListener("keydown", function(event) {
-                if (event.key === "ArrowRight") {
-                    currentSection = (currentSection + 1) % sections.length;
-                    showSection(currentSection);
-                } else if (event.key === "ArrowLeft") {
-                    currentSection = (currentSection - 1 + sections.length) % sections.length;
-                    showSection(currentSection);
-                }
-            });
-
-            // Initialize the first section
-            showSection(currentSection);
-        });
-</body>
+  </head>
+  <body>
+    <input type="range" id="thrust"/>
+    <div>Thrust is at: <span id="thrustValue">0</span></div>
+  </body>
+  <script>
+    var input=document.querySelector('#thrust');
+    input.addEventListener('input', sendToPi.bind(undefined, input));
+    async function sendToPi(input)
+    {
+      var thrust=await(await fetch('http://'+window.location.host+'/?command=set_all_thrust&value='+input.value)).json();
+      document.querySelector('#thrustValue').innerHTML=thrust.value;
+    }
+  </script>
 </html>
