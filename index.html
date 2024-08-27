@@ -42,10 +42,6 @@
             background:rgba(255,255,255,0.5);
         }
 
-        p {
-            line-height: 1.6;
-        }
-
         #phase0 {
             position: absolute;
             top: 0;
@@ -159,6 +155,11 @@
           height:100%;
           opacity:0.3;
         }
+        .subsection p {
+          max-width:80%;
+          margin:auto;
+          text-shadow:0 0 50px black;
+        }
     </style>
 </head>
 <body>
@@ -168,10 +169,10 @@
     <div class="phase selectable" id="phase1">
         <img src="images/phase_1_background_by_dall-e.webp" class="background"/>
         <h2>Phase 1</h2>
-        <div class="subsection">Goal: </div>
-        <div class="subsection">Scope: </div>
-        <div class="subsection">Functional Unit: </div>
-        <div class="subsection">Boundaries: </div>
+      <div class="subsection">Goal:<p>The goal of this LCA is to assess the environmental impacts of a cheap Fan Heater as the first step in exploring improvements in design that can be made.</p></div>
+      <div class="subsection">Functional Unit:<p>Provide 2kW of heating to a single person in a well-insulated room over 300 hours over 5 years.</p></div>
+      <div class="subsection">Boundaries:<p>The full life cycle impact of the product, from material extraction to disposal.</p></div>
+      <div class="subsection">Scope:<p>This study explores the energy usage and eCO2 of the five stages of the life cycle of the product.</p></div>
     </div>
 
     <div class="phase">
@@ -180,45 +181,64 @@
             <div class="stage selectable" id="stage1">
                 <img src="images/raw_materials_background_by_dall-e.webp" class="background"/>
                 <h3>Raw Materials</h3>
-                <div class="subsection">Environmental Inputs</div>
-                <div class="subsection">Energy</div>
-                <div class="subsection">Waste</div>
+                <div class="subsection">Environmental Inputs
+            <p style="text-shadow: 0 0 50px white;"><strong style="color:black;">Crude Oil</strong>: Polypropylene, ABS, Butyl Rubber; <strong style="color:dark silver;">Aluminium</strong>; <strong style="color:red;">Iron</strong>; <strong style="color: orange;">Copper</strong>; <strong style="color: gray;">Carbon</strong></p>
+            <p style="font-size:0.6em; text-shadow: 0 0 50px black;">The outer casing of the fan heater was in Polypropylene which made up a quarter of the total mass, and other plastics which have a base form from crude oil. The rest of the mass can mostly be found in the copper, aluminium, and steel. There is also cardboard and paper in the packaging and manual.</p>
+                </div>
+                <div class="subsection">Energy
+                  <p style="font-size:0.7em; text-shadow: 0 0 50px black;">Raw materials accounted for 138MJ of embodied energy in their harvesting, mining, or creation. 48MJ, 33% of the material energy cost, was in the Polypropylene outer casing and the ABS top casing. 29MJ, 20% of the material energy cost, was in the various metals (steel, copper, and aluminium). The other remaining ~47% of embodied energy was in different plastics within the device. This embodied energy represented 2.2% of the total energy used by the product over its estimated life cycle.</p>
+                </div>
+                <div class="subsection">Waste
+            <p style="font-size:0.8em; text-shadow:0 0 50px black;">Approximately 25% of the overall mass of the fan was made up of Polypropylene and other plastics. The rest of the weight is made up of metals such as Aluminium, copper and steel. All these materials are non-renewable. Extraction of these materials can lead to Greenhouse gas emissions that can lead to a disruption to a variety of ecosystems.</p>
+            <p>6.42kg eCO2, 1.5% of total.</p></div>
             </div>
 
             <!-- Manufacturing/Processing Stage -->
             <div class="stage selectable" id="stage2">
                 <img src="images/manufacturing_processing_background_by_dall-e.webp" class="background"/>
                 <h3>Manufacturing/Processing</h3>
-                <div class="subsection">Environmental Inputs</div>
-                <div class="subsection">Energy</div>
-                <div class="subsection">Waste</div>
+                <div class="subsection">Environmental Inputs
+            <p>Ammonia, Benzene, Carbon, Polyols, Isocyanates: Additives added to various plastics and metals</p><p>Electricity, Water: Used to run and cool the machinery.</p></div>
+                <div class="subsection">Energy
+            <p style="font-size:0.7em; text-shadow:0 0 50px black;">These heaters are massed produced in China in factories that use the Chinese electricity grid. The primary processes used to form the components were: Polymer Molding for the plastics, Casting for the solid metals, and Wire Drawing for wires. It is estimated that it would have taken 32MJ of energy to process the various components, which represents 0.5% of of the total energy used by the product over its estimated life cycle.</p></div>
+                <div class="subsection">Waste
+            <p style="font-size:0.7em; text-shadow:0 0 50px black;">Most of the waste at this stage comes from the burning of fossil fuels to power the machinery used when creating the components of the Fan Heater. This leads to the emission of greenhouse gases. The manufacturing of the fan heater also produces considerable amounts of waste such as metal shavings, plastic scraps, and other chemical byproducts.</p><p>2.39kg eCO2, 0.5% of total.</p></div>
             </div>
 
             <!-- Distribution/Transportation Stage -->
             <div class="stage selectable" id="stage3">
                 <img src="images/distribution_transportation_background_by_dall-e.webp" class="background"/>
                 <h3>Distribution/Transportation</h3>
-                <div class="subsection">Environmental Inputs</div>
-                <div class="subsection">Energy</div>
-                <div class="subsection">Waste</div>
+                <div class="subsection">Environmental Inputs
+            <p>Fossil Fuels for trucks and cargo ships, Paper/Cardboard for packaging.</p></div>
+                <div class="subsection">Energy
+            <p style="font-size:0.8em">Transport was broken up into three phases, from Chinese factory to port (0.17MJ), from Chinese port to Australian port (2.9MJ), and a combined overestimate from Australian port to homes (3.5MJ). Even with this overestimation transport and distribution accounts for a total of 6.48MJ, 0.1% of the energy used by the product over its estimated life cycle.</p></div>
+                <div class="subsection">Waste
+            <p>The majority of the waste at this stage comes from the fossil fuels burned by the ships and trucks.</p><p>0.46kg eCO2, 0.1% of total.</p></div>
             </div>
 
             <!-- Use Stage -->
             <div class="stage selectable" id="stage4">
                 <img src="images/use_background_by_dall-e.webp" class="background"/>
                 <h3>Use</h3>
-                <div class="subsection">Environmental Inputs</div>
-                <div class="subsection">Energy</div>
-                <div class="subsection">Waste</div>
+                <div class="subsection">Environmental Inputs
+            <p>None.</p></div>
+                <div class="subsection">Energy
+            <p style="font-size:0.8em;">This product uses an inefficient heating element, just running electricity through a filament at a small amount under 2kW. This results in 6,200MJ of energy being used over the estimated life of the product, 300 hours of use over 5 years, 97.2% of the total energy used over the life of the product.</p></div>
+          <div class="subsection">Waste
+            <p>The fan heater requires electricity to operate, and depending on the energy source can lead to the emission of greenhouse gases. Estimates were taken from the Queensland electricity grid makeup.</p><p>428kg eCO2, 97.9% of total.</p></div>
             </div>
 
             <!-- Disposal Stage -->
             <div class="stage selectable" id="stage5">
                 <img src="images/disposal_background_by_dall-e.webp" class="background"/>
                 <h3>Disposal</h3>
-                <div class="subsection">Environmental Inputs</div>
-                <div class="subsection">Energy</div>
-                <div class="subsection">Waste</div>
+                <div class="subsection">Environmental Inputs
+            <p>None.</p></div>
+                <div class="subsection">Energy
+            <p>Minimal energy is used to move all components of the product to landfill at the end of its life cycle, an estimated 0.4MJ of energy for it to be taken in a rubbish truck. This represents a rounding error of 0.0% of total energy used over the life of the product.</p></div>
+                <div class="subsection">Waste
+            <p>The product is so minimal and lightweight that the eCO2 of disposing of the entire product in landfill is also miniscule.</p><p>0.0285kg eCO2, 0.0% of total.</p></div>
             </div>
         </div>
     </div>
@@ -226,10 +246,17 @@
     <div class="phase selectable" id="phase4">
         <img src="images/phase_4_background_by_dall-e.webp" class="background"/>
         <h2>Phase 4</h2>
-        <div class="subsection">Interpretation: </div>
-        <div class="subsection">Summarisation: </div>
-        <div class="subsection">Hotspots: </div>
-        <div class="subsection">Limitations: </div>
+        <div class="subsection">Interpretation:
+        <p>It is clear from the analysis that it is entirely the <strong>usage</strong> stage that has the most room to be optimised for sustainability.</p></div>
+      <div class="subsection">Summarisation:
+        <p style="font-size:0.7em;"><strong>Raw Materials</strong> accounted for <strong>2.2%</strong> energy and <strong>1.5%</strong> eCO2; 
+          <strong>Manufacturing/Processing</strong> accounted for <strong>0.5%</strong> energy and eCO2; 
+          <strong>Distribution/Transportation</strong> accounted for <strong>0.1%</strong> energy and eCO2; 
+          <strong>Use</strong> accounted for <strong>97.2%</strong> energy and <strong>97.9%</strong> eCO2; 
+          <strong>Disposal</strong> accounted for <strong>0.0%</strong> (rounding error) of energy and eCO2.</div>
+        <div class="subsection">Hotspots: 
+        <p>The only hotspot was the <strong>usage</strong> phase, which does provide a big opportunity to use a more efficient heating technology (such as reverse-cycle refrigerant/R290 heaters)</p></div>
+      <div class="subsection">Limitations:<p style="font-size:0.7em;">Heater usage was assumed to be only 60 hours per year, though even with that possible underestimate <strong>usage</strong> was the largest factor. Assumptions made by the EduPack EcoAudit were also inherited by our study. Guesses were made about materials and processing methods. All of which <em>shouldn't</em> have misleadingly impacted <strong>usage</strong> as the hotspot for us to focus on moving forward.</p></div>
     </div>
     <div class="phase selectable" id="phase5">
       <img id="fan_heater_disassembled" src="images/fan_heater_disassembled.png"/>
