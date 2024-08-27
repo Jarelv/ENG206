@@ -124,7 +124,7 @@
           opacity:1;
           filter:saturate(1.5);
         }
-        .left_annotation, .right_annotation {
+        .left_annotation, .right_annotation, .top_annotation {
           z-index:1;
           position:absolute;
           left:0;
@@ -137,6 +137,10 @@
         .right_annotation {
           right:0;
           left:initial;
+        }
+        .top_annotation {
+          top:0;
+          bottom:initial;
         }
         #fan_heater_assembled {
           width:4965px;
@@ -264,6 +268,7 @@
 
     <div class="left_annotation">The presentation document can be found at: <a href="https://jarelv.github.io/ENG206/index.html">https://jarelv.github.io/ENG206/index.html</a></div>
     <div class="right_annotation">Generative AI imagery was used with permission</div>
+    <div class="top_annotation">Use left and right arrows to progress through the dynamic document</div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
