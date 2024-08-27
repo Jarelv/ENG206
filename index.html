@@ -15,18 +15,17 @@
             font-family: "Red Hat Display", sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
             color: #333;
             width: 9930px;
             height: 7020px;
             overflow: hidden;
-            transition: transform 1s linear;
+            transition: transform 0.5s linear;
             font-size: 5em;
             text-align: center;
         }
         
         .phase, .stage {
-          border: 4px solid gray;
+          background-color: #f4f4f4;
         }
 
         .container {
@@ -40,17 +39,25 @@
             text-align: center;
             color: #2c3e50;
             font-family: "Arvo", serif;
+            background:rgba(255,255,255,0.5);
         }
 
         p {
             line-height: 1.6;
         }
 
-        #phase1 {
+        #phase0 {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
+            width: 50%;
+            height: 2000px;
+        }
+        #phase1 {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
             height: 2000px;
         }
 
@@ -58,7 +65,14 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 100%;
+            width: 50%;
+            height: 2014px;
+        }
+        #phase5 {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 50%;
             height: 2014px;
         }
 
@@ -90,23 +104,81 @@
         }
 
         .subsection {
-            margin-top: 10px;
+            color: white;
+            margin:auto;
+            margin-top: 50px;
             padding: 10px;
             border-top: 1px solid #ddd;
-            height:calc(33% - 20px);
+            height:calc(30% - 80px);
+            width:95%;
+            border-radius:50px;
+            background:rgba(0,0,0,0.2);
+            left:0;
+            right:0;
+        }
+        #phase1 .subsection, #phase4 .subsection {
+            height:calc(20% - 80px);
+        }
+        .selectable {
+          opacity:0.2;
+          filter:saturate(0);
+          transition: opacity 0.5s linear, filter 7s;
+        }
+        .selectable.selected {
+          opacity:1;
+          filter:saturate(1.5);
+        }
+        .left_annotation, .right_annotation {
+          z-index:1;
+          position:absolute;
+          left:0;
+          bottom:0;
+          font-size:0.8em;
+          background:rgba(255,255,255,0.8);
+          padding:10px;
+          opacity:0.8;
+        }
+        .right_annotation {
+          right:0;
+          left:initial;
+        }
+        #fan_heater_assembled {
+          width:4965px;
+          height:2000px;
+        }
+        #fan_heater_disassembled {
+          width:4965px;
+          height:2014px;
+        }
+        .background {
+          z-index:-1;
+          position:absolute;
+          top:0;
+          left:0;
+          width:100%;
+          height:100%;
+          opacity:0.3;
         }
     </style>
 </head>
 <body>
-    <div class="phase" id="phase1">
+    <div class="phase selectable" id="phase0">
+      <img id="fan_heater_assembled" src="images/fan_heater_assembled.png"/>
+    </div>
+    <div class="phase selectable" id="phase1">
+        <img src="images/phase_1_background_by_dall-e.webp" class="background"/>
         <h2>Phase 1</h2>
-        <p>Goal, Scope, Functional Unit, Boundaries</p>
+        <div class="subsection">Goal: </div>
+        <div class="subsection">Scope: </div>
+        <div class="subsection">Functional Unit: </div>
+        <div class="subsection">Boundaries: </div>
     </div>
 
     <div class="phase">
         <div class="phase2-3">
             <!-- Raw Materials Stage -->
-            <div class="stage" id="stage1">
+            <div class="stage selectable" id="stage1">
+                <img src="images/raw_materials_background_by_dall-e.webp" class="background"/>
                 <h3>Raw Materials</h3>
                 <div class="subsection">Environmental Inputs</div>
                 <div class="subsection">Energy</div>
@@ -114,7 +186,8 @@
             </div>
 
             <!-- Manufacturing/Processing Stage -->
-            <div class="stage" id="stage2">
+            <div class="stage selectable" id="stage2">
+                <img src="images/manufacturing_processing_background_by_dall-e.webp" class="background"/>
                 <h3>Manufacturing/Processing</h3>
                 <div class="subsection">Environmental Inputs</div>
                 <div class="subsection">Energy</div>
@@ -122,7 +195,8 @@
             </div>
 
             <!-- Distribution/Transportation Stage -->
-            <div class="stage" id="stage3">
+            <div class="stage selectable" id="stage3">
+                <img src="images/distribution_transportation_background_by_dall-e.webp" class="background"/>
                 <h3>Distribution/Transportation</h3>
                 <div class="subsection">Environmental Inputs</div>
                 <div class="subsection">Energy</div>
@@ -130,7 +204,8 @@
             </div>
 
             <!-- Use Stage -->
-            <div class="stage" id="stage4">
+            <div class="stage selectable" id="stage4">
+                <img src="images/use_background_by_dall-e.webp" class="background"/>
                 <h3>Use</h3>
                 <div class="subsection">Environmental Inputs</div>
                 <div class="subsection">Energy</div>
@@ -138,7 +213,8 @@
             </div>
 
             <!-- Disposal Stage -->
-            <div class="stage" id="stage5">
+            <div class="stage selectable" id="stage5">
+                <img src="images/disposal_background_by_dall-e.webp" class="background"/>
                 <h3>Disposal</h3>
                 <div class="subsection">Environmental Inputs</div>
                 <div class="subsection">Energy</div>
@@ -147,15 +223,27 @@
         </div>
     </div>
 
-    <div class="phase" id="phase4">
+    <div class="phase selectable" id="phase4">
+        <img src="images/phase_4_background_by_dall-e.webp" class="background"/>
         <h2>Phase 4</h2>
-        <p>Interpretation, Summarisation, Hotspots, Limitations</p>
+        <div class="subsection">Interpretation: </div>
+        <div class="subsection">Summarisation: </div>
+        <div class="subsection">Hotspots: </div>
+        <div class="subsection">Limitations: </div>
     </div>
+    <div class="phase selectable" id="phase5">
+      <img id="fan_heater_disassembled" src="images/fan_heater_disassembled.png"/>
+    </div>
+
+    <div class="left_annotation">The presentation document can be found at: <a href="https://jarelv.github.io/ENG206/index.html">https://jarelv.github.io/ENG206/index.html</a></div>
+    <div class="right_annotation">Generative AI imagery was used with permission</div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             let currentSection = 0;
             function zoomToSection(section) {
+              Array.from(document.querySelectorAll('.selectable')).map(m=>m.classList.toggle('selected', false));
+              section.classList.toggle('selected',true);
               const viewportHeight = window.innerHeight;
 
               // Calculate scale to fit the section height plus 5%
@@ -178,13 +266,15 @@
           let currentSectionIndex = 0;
           const sections = [
               'all',
+              document.getElementById("phase0"),
               document.getElementById("phase1"),
               document.getElementById("stage1"),
               document.getElementById("stage2"),
               document.getElementById("stage3"),
               document.getElementById("stage4"),
               document.getElementById("stage5"),
-              document.getElementById("phase4")
+              document.getElementById("phase4"),
+              document.getElementById("phase5")
           ];
 
           document.addEventListener("keydown", function(event) {
@@ -214,6 +304,7 @@
               const translateX = (viewportWidth / scale - posterWidth) / 2;
               const translateY = (viewportHeight / scale - posterHeight) / 2;
 
+              Array.from(document.querySelectorAll('.selectable')).map(m=>m.classList.toggle('selected', true));
               document.body.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
               document.body.style.transformOrigin = "0 0"; // Scale from the top-left corner
           }
